@@ -1,0 +1,68 @@
+
+/* Styles for LinkedIn Android Hunter extension */
+
+/* Highlighted post styles */
+.android-hunter-highlighted {
+  border: 2px solid #D3E4FD !important;
+  border-radius: 8px !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease !important;
+}
+
+.android-hunter-highlighted:hover {
+  border-color: #0EA5E9 !important;
+}
+
+/* Email actions container */
+.android-hunter-actions {
+  position: relative;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #F8FAFC;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Email preview */
+.android-hunter-email-preview {
+  font-size: 14px;
+  color: #334155;
+  padding: 4px 8px;
+  background-color: #F1F5F9;
+  border-radius: 4px;
+  border-left: 3px solid #0EA5E9;
+  word-break: break-all;
+}
+
+/* Button styles */
+.android-hunter-email-btn,
+.android-hunter-copy-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.android-hunter-email-btn {
+  background-color: #0EA5E9;
+  color: white;
+}
+
+.android-hunter-email-btn:hover {
+  background-color: #0284C7;
+}
+
+.android-hunter-copy-btn {
+  background-color: #E2E8F0;
+  color: #334155;
+}
+
+.android-hunter-copy-btn:hover {
+  background-color: #CBD5E1;
+}

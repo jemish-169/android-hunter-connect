@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Android Hunter</title>
+  <style>
+    body {
+      width: 340px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 16px;
+      color: #334155;
+    }
+    
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: #0EA5E9;
+      display: flex;
+      align-items: center;
+    }
+    
+    h1 img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+    
+    .toggle-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 24px;
+    }
+    
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #CBD5E1;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .toggle-slider {
+      background-color: #0EA5E9;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(24px);
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    
+    .tab {
+      padding: 8px 16px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      font-weight: 500;
+    }
+    
+    .tab.active {
+      border-bottom-color: #0EA5E9;
+      color: #0EA5E9;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    h2 {
+      font-size: 16px;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    
+    .tag {
+      background-color: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 4px 10px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .tag .remove {
+      margin-left: 6px;
+      color: #94A3B8;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .input-container {
+      display: flex;
+      margin-bottom: 16px;
+    }
+    
+    .input-container input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    .input-container button {
+      padding: 8px 12px;
+      background-color: #0EA5E9;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 8px 12px;
+      border: 1px solid #CBD5E1;
+      border-radius: 4px;
+      font-size: 14px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    
+    .color-picker {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .color-option {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    
+    .color-option.selected {
+      border-color: #334155;
+    }
+    
+    .footer {
+      margin-top: 16px;
+      text-align: right;
+    }
+    
+    .save-btn {
+      padding: 8px 16px;
+      background-color: #0EA5E9;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .save-btn:hover {
+      background-color: #0284C7;
+    }
+  </style>
+</head>
+<body>
+  <h1><img src="images/icon48.png" alt="Logo">LinkedIn Android Hunter</h1>
+  
+  <div class="toggle-section">
+    <span>Enable Hunter</span>
+    <label class="toggle">
+      <input type="checkbox" id="enabled-toggle" checked>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+  
+  <div class="tabs">
+    <div class="tab active" data-tab="keywords">Keywords</div>
+    <div class="tab" data-tab="template">Email Template</div>
+    <div class="tab" data-tab="appearance">Appearance</div>
+  </div>
+  
+  <div class="tab-content active" id="keywords-tab">
+    <h2>Android Keywords</h2>
+    <div class="tags" id="keywords-container">
+      <!-- Keywords will be added dynamically -->
+    </div>
+    
+    <div class="input-container">
+      <input type="text" id="keyword-input" placeholder="Add keyword...">
+      <button id="add-keyword-btn">Add</button>
+    </div>
+    
+    <h2>Hiring Terms</h2>
+    <div class="tags" id="hiring-terms-container">
+      <!-- Hiring terms will be added dynamically -->
+    </div>
+    
+    <div class="input-container">
+      <input type="text" id="hiring-term-input" placeholder="Add hiring term...">
+      <button id="add-hiring-term-btn">Add</button>
+    </div>
+  </div>
+  
+  <div class="tab-content" id="template-tab">
+    <h2>Email Template</h2>
+    <p>Customize your email template. Use [Your Name] and [Your Experience] placeholders.</p>
+    <textarea id="email-template"></textarea>
+  </div>
+  
+  <div class="tab-content" id="appearance-tab">
+    <h2>Highlight Color</h2>
+    <div class="color-picker" id="color-picker">
+      <div class="color-option" data-color="#D3E4FD" style="background-color: #D3E4FD;"></div>
+      <div class="color-option" data-color="#F2FCE2" style="background-color: #F2FCE2;"></div>
+      <div class="color-option" data-color="#FEF7CD" style="background-color: #FEF7CD;"></div>
+      <div class="color-option" data-color="#FDE1D3" style="background-color: #FDE1D3;"></div>
+      <div class="color-option" data-color="#E5DEFF" style="background-color: #E5DEFF;"></div>
+      <div class="color-option" data-color="#FFDEE2" style="background-color: #FFDEE2;"></div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <button class="save-btn" id="save-btn">Save Settings</button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
